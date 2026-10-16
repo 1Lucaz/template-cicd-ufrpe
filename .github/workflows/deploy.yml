@@ -1,0 +1,30 @@
+name: Deploy Automatizado na Oracle Cloud
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Conectar via SSH e Atualizar Container
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # =========================================================
+            # CONFIGURAÇÃO DO GRUPO (Altere os 3 valores abaixo)
+            PASTA_DO_PROJETO="professor"
+            NOME_DO_CONTAINER="app-professor"
+            PORTA_EXTERNA="8080"
+            # =========================================================
+
+            cd /home/ubuntu/$PASTA_DO_PROJETO
+            git pull origin main
+            docker build -t imagem-$NOME_DO_CONTAINER .
+            docker stop $NOME_DO_CONTAINER || true
+            docker rm $NOME_DO_CONTAINER || true
+            docker run -d --name $NOME_DO_CONTAINER -p $PORTA_EXTERNA:8080 imagem-$NOME_DO_CONTAINER
