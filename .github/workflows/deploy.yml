@@ -22,7 +22,7 @@ jobs:
             PORTA_EXTERNA="8080"
             # =========================================================
 
-            cd /home/ubuntu/$PASTA_DO_PROJETO
+            cd /home/aula/$PASTA_DO_PROJETO
             git pull origin main
             docker build -t imagem-$NOME_DO_CONTAINER .
             docker stop $NOME_DO_CONTAINER || true
