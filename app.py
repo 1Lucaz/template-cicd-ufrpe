@@ -7,11 +7,11 @@ import socket
 app = Flask(__name__)
 fake = Faker('pt_BR')
 
-# ======================================================================
+# =======================================================================
 # Altere o nome abaixo no GitHub para testar o CI/CD
 NOME_DA_EQUIPE = "Exemplo do Professor (template)"
 COR_DO_TEMA = "#1e293b" # Sugestão: mude para #064e3b (Verde) ou #7f1d1d (Vermelho)
-# ======================================================================
+# =======================================================================
 
 @app.route('/')
 def home():
