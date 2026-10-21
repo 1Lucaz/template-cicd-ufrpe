@@ -17,8 +17,8 @@ jobs:
           script: |
             # =========================================================
             # CONFIGURAÇÃO DO GRUPO (Altere os 3 valores abaixo)
-            PASTA_DO_PROJETO="1Lucaz"
-            NOME_DO_CONTAINER="app-1Lucaz"
+            PASTA_DO_PROJETO="lucas"
+            NOME_DO_CONTAINER="app-lucas"
             PORTA_EXTERNA="8091"
             # =========================================================
 
